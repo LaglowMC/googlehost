@@ -1,436 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Google Hosting</title>
-   <!-- Load Tailwind CSS -->
-   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- Configure Tailwind for custom theme and Inter font -->
-   <script>
-       tailwind.config = {
-           theme: {
-               extend: {
-                   colors: {
-                       'primary-blue': '#4285F4', // Google Blue (used for accents/buttons)
-                       'primary-green': '#34A853', // Google Green (used for features/accents)
-                       'dark-bg': '#121212',
-                       'card-bg': '#1E1E1E',
-                       'text-light': '#E0E0E0',
-                       // New, darker colors for the featured card background
-                       'featured-dark-blue': '#1A375A', // Deep Navy start
-                       'featured-dark-blue-light': '#264E7A', // Dark Blue end
-                   },
-                   fontFamily: {
-                       sans: ['Inter', 'sans-serif'],
-                   },
-               }
-           }
-       }
-   </script>
-   <style>
-       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-       /* Custom scrollbar for a sleeker look */
-       #plan-carousel-minecraft::-webkit-scrollbar,
-       #plan-carousel-discord::-webkit-scrollbar { height: 8px; }
-       #plan-carousel-minecraft::-webkit-scrollbar-thumb,
-       #plan-carousel-discord::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.2); border-radius: 4px; }
-       #plan-carousel-minecraft::-webkit-scrollbar-track,
-       #plan-carousel-discord::-webkit-scrollbar-track { background-color: rgba(0, 0, 0, 0.1); }
-       /* Enforce scroll-snap behavior */
-       .snap-mandatory > div { scroll-snap-align: center; }
-      
-       /* Hide the pages initially */
-       .page-content { display: none; }
-       /* Active nav link styling */
-       .nav-active { border-b-2 border-primary-green text-white !important; }
-   </style>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Google Hosting</title>
+      <link rel="icon" type="image/png" href="https://www.gstatic.com/images/branding/googleg_gradient/1x/googleg_gradient_standard_20dp.png">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+       tailwind.config = {
+           theme: {
+               extend: {
+                   colors: {
+                       'primary-blue': '#4285F4', // Google Blue (used for accents/buttons)
+                       'primary-green': '#34A853', // Google Green (used for features/accents)
+                       'dark-bg': '#121212',
+                       'card-bg': '#1E1E1E',
+                       'text-light': '#E0E0E0',
+                       // New, darker colors for the featured card background
+                       'featured-dark-blue': '#1A375A', // Deep Navy start
+                       'featured-dark-blue-light': '#264E7A', // Dark Blue end
+                   },
+                   fontFamily: {
+                       sans: ['Inter', 'sans-serif'],
+                   },
+               }
+           }
+       }
+   </script>
+   <style>
+       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+       /* Custom scrollbar for a sleeker look */
+       #plan-carousel-minecraft::-webkit-scrollbar,
+       #plan-carousel-discord::-webkit-scrollbar { height: 8px; }
+       #plan-carousel-minecraft::-webkit-scrollbar-thumb,
+       #plan-carousel-discord::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+       #plan-carousel-minecraft::-webkit-scrollbar-track,
+       #plan-carousel-discord::-webkit-scrollbar-track { background-color: rgba(0, 0, 0, 0.1); }
+       /* Enforce scroll-snap behavior */
+       .snap-mandatory > div { scroll-snap-align: center; }
+      
+       /* Hide the pages initially */
+       .page-content { display: none; }
+       /* Active nav link styling */
+       .nav-active { border-b-2 border-primary-green text-white !important; }
+   </style>
 </head>
 <body class="bg-dark-bg text-text-light font-sans min-h-screen">
 
 
-   <!-- Global Navigation Bar -->
-   <nav class="bg-card-bg shadow-lg sticky top-0 z-50">
-       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div class="flex justify-between h-16">
-               <div class="flex">
-                   <!-- Logo/Brand Name -->
-                   <div class="flex-shrink-0 flex items-center">
-                       <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-blue to-primary-green">
-                           Google Host
-                       </span>
-                   </div>
-               </div>
-               <!-- Navigation Links -->
-               <div class="flex items-center space-x-4">
-                   <button class="nav-link text-gray-300 hover:text-white px-3 py-2 font-medium transition duration-150" data-page="home">
-                       Home
-                   </button>
-                   <button class="nav-link text-gray-300 hover:text-white px-3 py-2 font-medium transition duration-150" data-page="minecraft">
-                       Minecraft Servers
-                   </button>
-                   <button class="nav-link text-gray-300 hover:text-white px-3 py-2 font-medium transition duration-150" data-page="discord">
-                       Discord Bot Hosting
-                   </button>
-                   <!-- 'All Cloud Plans' link removed as requested -->
-               </div>
-           </div>
-       </div>
-   </nav>
+      <nav class="bg-card-bg shadow-lg sticky top-0 z-50">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div class="flex justify-between h-16">
+               <div class="flex">
+                                      <div class="flex-shrink-0 flex items-center">
+                       <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-blue to-primary-green">
+                           Google Host
+                       </span>
+                   </div>
+               </div>
+                              <div class="flex items-center space-x-4">
+                   <button class="nav-link text-gray-300 hover:text-white px-3 py-2 font-medium transition duration-150" data-page="home">
+                       Home
+                   </button>
+                   <button class="nav-link text-gray-300 hover:text-white px-3 py-2 font-medium transition duration-150" data-page="minecraft">
+                       Minecraft Servers
+                   </button>
+                   <button class="nav-link text-gray-300 hover:text-white px-3 py-2 font-medium transition duration-150" data-page="discord">
+                       Discord Bot Hosting
+                   </button>
+                                  </div>
+           </div>
+       </div>
+   </nav>
 
 
-   <!-- Main Content Container -->
-   <div id="app-container" class="p-4 sm:p-8">
+      <div id="app-container" class="p-4 sm:p-8">
 
 
-       <!-- ============================================== -->
-       <!-- 1. HOME PAGE (INFORMATIONAL HUB) -->
-       <!-- ============================================== -->
-       <section id="home-page" class="page-content max-w-7xl mx-auto">
-          
-           <!-- Header Section -->
-           <header class="text-center mb-12">
-               <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary-blue to-primary-green">
-                   Welcome to Google Host
-               </h1>
-               <!-- Updated: Removed 'i5' reference -->
-               <p class="text-xl text-gray-400">The fastest way to deploy your favorite games and bots, powered by dedicated high-performance cores.</p>
-           </header>
+                            <section id="home-page" class="page-content max-w-7xl mx-auto">
+          
+                      <header class="text-center mb-12">
+               <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary-blue to-primary-green">
+                   Welcome to Google Host
+               </h1>
+                              <p class="text-xl text-gray-400">The fastest way to deploy your favorite games and bots, powered by dedicated high-performance cores.</p>
+           </header>
 
 
-           <!-- Value Proposition/Good Qualities Section -->
-           <div class="max-w-6xl mx-auto mb-16">
-               <h2 class="text-3xl font-bold text-center mb-8 text-primary-green">Why Choose Our Service?</h2>
-               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                   <!-- Feature 1: Uptime -->
-                   <div class="bg-card-bg p-6 rounded-xl shadow-lg border border-gray-700 hover:border-primary-blue transition duration-300">
-                       <svg class="w-8 h-8 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                       <h3 class="text-xl font-semibold text-text-light">99.9% Uptime Guarantee</h3>
-                       <p class="text-gray-400 mt-2">Maximum reliability for your applications and users, backed by enterprise-grade infrastructure.</p>
-                   </div>
-                   <!-- Feature 2: Speed/Performance - Updated: Removed 'i5' reference -->
-                   <div class="bg-card-bg p-6 rounded-xl shadow-lg border border-gray-700 hover:border-primary-blue transition duration-300">
-                       <svg class="w-8 h-8 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                       <h3 class="text-xl font-semibold text-text-light">High-Performance Cores</h3>
-                       <p class="text-gray-400 mt-2">Every plan is powered by dedicated, fast processors for incredible speed and responsiveness.</p>
-                   </div>
-                   <!-- Feature 3: Support -->
-                   <div class="bg-card-bg p-6 rounded-xl shadow-lg border border-gray-700 hover:border-primary-blue transition duration-300">
-                       <svg class="w-8 h-8 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 0l-3.536 3.536m3.536-3.536L12 12m0 0l-3.536-3.536m3.536 3.536L12 12m0 0l-3.536 3.536M12 12l3.536-3.536M12 12l3.536 3.536m-7.072 0l3.536-3.536M12 12l3.536-3.536"></path></svg>
-                       <h3 class="text-xl font-semibold text-text-light">24/7 Premium Support</h3>
-                       <p class="text-gray-400 mt-2">Our expert team is always available to help you with setup, maintenance, and optimization.</p>
-                   </div>
-               </div>
-           </div>
+                      <div class="max-w-6xl mx-auto mb-16">
+               <h2 class="text-3xl font-bold text-center mb-8 text-primary-green">Why Choose Our Service?</h2>
+               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                      <div class="bg-card-bg p-6 rounded-xl shadow-lg border border-gray-700 hover:border-primary-blue transition duration-300">
+                       <svg class="w-8 h-8 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                       <h3 class="text-xl font-semibold text-text-light">99.9% Uptime Guarantee</h3>
+                       <p class="text-gray-400 mt-2">Maximum reliability for your applications and users, backed by enterprise-grade infrastructure.</p>
+                   </div>
+                                      <div class="bg-card-bg p-6 rounded-xl shadow-lg border border-gray-700 hover:border-primary-blue transition duration-300">
+                       <svg class="w-8 h-8 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                       <h3 class="text-xl font-semibold text-text-light">High-Performance Cores</h3>
+                       <p class="text-gray-400 mt-2">Every plan is powered by dedicated, fast processors for incredible speed and responsiveness.</p>
+                   </div>
+                                      <div class="bg-card-bg p-6 rounded-xl shadow-lg border border-gray-700 hover:border-primary-blue transition duration-300">
+                       <svg class="w-8 h-8 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 0l-3.536 3.536m3.536-3.536L12 12m0 0l-3.536-3.536m3.536 3.536L12 12m0 0l-3.536 3.536M12 12l3.536-3.536M12 12l3.536 3.536m-7.072 0l3.536-3.536M12 12l3.536-3.536"></path></svg>
+                       <h3 class="text-xl font-semibold text-text-light">24/7 Premium Support</h3>
+                       <p class="text-gray-400 mt-2">Our expert team is always available to help you with setup, maintenance, and optimization.</p>
+                   </div>
+               </div>
+           </div>
 
 
-           <!-- New Home Page CTA/Links Section -->
-           <div class="max-w-6xl mx-auto mt-16 text-center">
-               <h2 class="text-3xl font-bold mb-6 text-primary-blue">Ready to Host? Explore Our Specialized Services</h2>
-               <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                   <!-- Link to Minecraft -->
-                   <button data-page="minecraft" class="nav-link-cta block p-6 rounded-xl bg-card-bg hover:bg-gray-700 transition duration-300 text-left">
-                       <h3 class="text-xl font-semibold text-primary-green">Minecraft Servers <span class="float-right text-gray-500">→</span></h3>
-                       <p class="text-gray-400 mt-2">Lag-free worlds for survival, custom modpacks, and large communities.</p>
-                   </button>
-                   <!-- Link to Discord -->
-                   <button data-page="discord" class="nav-link-cta block p-6 rounded-xl bg-card-bg hover:bg-gray-700 transition duration-300 text-left">
-                       <h3 class="text-xl font-semibold text-primary-green">Discord Bot Hosting <span class="float-right text-gray-500">→</span></h3>
-                       <p class="text-gray-400 mt-2">24/7 reliability for your custom utility, music, or integrated bots.</p>
-                   </button>
-                   <!-- Support/Contact -->
-                   <div class="p-6 rounded-xl bg-card-bg border border-gray-700 text-left">
-                       <h3 class="text-xl font-semibold text-primary-blue">Support & Community</h3>
-                       <p class="text-gray-400 mt-2 mb-4">Connect with our team and community for quick help and advice.</p>
-                       <button class="text-sm font-semibold text-dark-bg bg-primary-blue py-2 px-4 rounded-lg hover:bg-blue-600 transition">Contact Support</button>
-                       <button class="text-sm font-semibold text-dark-bg bg-gray-500 py-2 px-4 rounded-lg hover:bg-gray-600 transition ml-2">Discord Server</button>
-                   </div>
-               </div>
-              
-               <!-- CTA to General Plans removed as requested -->
-           </div>
+                      <div class="max-w-6xl mx-auto mt-16 text-center">
+               <h2 class="text-3xl font-bold mb-6 text-primary-blue">Ready to Host? Explore Our Specialized Services</h2>
+               <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                                      <button data-page="minecraft" class="nav-link-cta block p-6 rounded-xl bg-card-bg hover:bg-gray-700 transition duration-300 text-left">
+                       <h3 class="text-xl font-semibold text-primary-green">Minecraft Servers <span class="float-right text-gray-500">→</span></h3>
+                       <p class="text-gray-400 mt-2">Lag-free worlds for survival, custom modpacks, and large communities.</p>
+                   </button>
+                                      <button data-page="discord" class="nav-link-cta block p-6 rounded-xl bg-card-bg hover:bg-gray-700 transition duration-300 text-left">
+                       <h3 class="text-xl font-semibold text-primary-green">Discord Bot Hosting <span class="float-right text-gray-500">→</span></h3>
+                       <p class="text-gray-400 mt-2">24/7 reliability for your custom utility, music, or integrated bots.</p>
+                   </button>
+                                      <div class="p-6 rounded-xl bg-card-bg border border-gray-700 text-left">
+                       <h3 class="text-xl font-semibold text-primary-blue">Support & Community</h3>
+                       <p class="text-gray-400 mt-2 mb-4">Connect with our team and community for quick help and advice.</p>
+                       <button class="text-sm font-semibold text-dark-bg bg-primary-blue py-2 px-4 rounded-lg hover:bg-blue-600 transition">Contact Support</button>
+                       <button class="text-sm font-semibold text-dark-bg bg-gray-500 py-2 px-4 rounded-lg hover:bg-gray-600 transition ml-2">Discord Server</button>
+                   </div>
+                </div>
+              
+                          </div>
 
 
-       </section>
+       </section>
 
 
-       <!-- ============================================== -->
-       <!-- 2. MINECRAFT SERVER HOSTING PAGE -->
-       <!-- ============================================== -->
-       <section id="minecraft-page" class="page-content max-w-7xl mx-auto">
-           <header class="text-center mb-12">
-               <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 text-primary-green">
-                   Minecraft Server Hosting
-               </h1>
-               <p class="text-xl text-gray-400">Host your world with dedicated high-performance cores and lightning-fast storage for smooth gameplay.</p>
-           </header>
+                            <section id="minecraft-page" class="page-content max-w-7xl mx-auto">
+           <header class="text-center mb-12">
+               <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 text-primary-green">
+                   Minecraft Server Hosting
+               </h1>
+               <p class="text-xl text-gray-400">Host your world with dedicated high-performance cores and lightning-fast storage for smooth gameplay.</p>
+           </header>
 
 
-           <div class="max-w-6xl mx-auto">
-               <h2 class="text-3xl font-bold text-center mb-8 text-primary-blue">Ready for Survival, Modpacks, and More!</h2>
-              
-               <!-- Feature Grid specific to Minecraft -->
-               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                   <div class="bg-card-bg p-6 rounded-xl border border-gray-700">
-                       <h3 class="text-xl font-semibold text-text-light flex items-center"><span class="mr-2 text-primary-green">✓</span> Low Latency</h3>
-                       <p class="text-gray-400 mt-2">Our infrastructure minimizes lag, giving you and your friends the best multiplayer experience.</p>
-                   </div>
-                   <div class="bg-card-bg p-6 rounded-xl border border-gray-700">
-                       <h3 class="text-xl font-semibold text-text-light flex items-center"><span class="mr-2 text-primary-green">✓</span> Full Mod & Plugin Support</h3>
-                       <!-- Updated description -->
-                       <p class="text-gray-400 mt-2">Easily run Paper, Spigot, Bukkit, Fabric, Forge, and custom modpacks on your dedicated server.</p>
-                   </div>
-               </div>
-              
-               <!-- Minecraft Plan Carousel -->
-               <!-- ADDED pt-4 (padding top) to prevent the scaled-up featured card from clipping -->
-               <div id="plan-carousel-minecraft" class="flex overflow-x-scroll pt-4 pb-10 hide-scroll-bar snap-x snap-mandatory space-x-6">
-                   <!-- Cards will be dynamically inserted here by JavaScript -->
-               </div>
-               <p class="text-center text-gray-500 mt-6 text-sm">Scroll horizontally to view all Minecraft hosting plans.</p>
-           </div>
-       </section>
+           <div class="max-w-6xl mx-auto">
+               <h2 class="text-3xl font-bold text-center mb-8 text-primary-blue">Ready for Survival, Modpacks, and More!</h2>
+              
+                              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                   <div class="bg-card-bg p-6 rounded-xl border border-gray-700">
+                       <h3 class="text-xl font-semibold text-text-light flex items-center"><span class="mr-2 text-primary-green">✓</span> Low Latency</h3>
+                       <p class="text-gray-400 mt-2">Our infrastructure minimizes lag, giving you and your friends the best multiplayer experience.</p>
+                   </div>
+                   <div class="bg-card-bg p-6 rounded-xl border border-gray-700">
+                       <h3 class="text-xl font-semibold text-text-light flex items-center"><span class="mr-2 text-primary-green">✓</span> Full Mod & Plugin Support</h3>
+                                              <p class="text-gray-400 mt-2">Easily run Paper, Spigot, Bukkit, Fabric, Forge, and custom modpacks on your dedicated server.</p>
+                   </div>
+               </div>
+              
+                                             <div id="plan-carousel-minecraft" class="flex overflow-x-scroll pt-4 pb-10 hide-scroll-bar snap-x snap-mandatory space-x-6">
+                                  </div>
+               <p class="text-center text-gray-500 mt-6 text-sm">Scroll horizontally to view all Minecraft hosting plans.</p>
+           </div>
+       </section>
 
 
-       <!-- ============================================== -->
-       <!-- 3. DISCORD BOT HOSTING PAGE -->
-       <!-- ============================================== -->
-       <section id="discord-page" class="page-content max-w-7xl mx-auto">
-           <header class="text-center mb-12">
-               <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 text-primary-green">
-                   Discord Bot Hosting
-               </h1>
-               <p class="text-xl text-gray-400">Keep your bots running 24/7 with zero downtime.</p>
-           </header>
+                            <section id="discord-page" class="page-content max-w-7xl mx-auto">
+           <header class="text-center mb-12">
+               <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 text-primary-green">
+                   Discord Bot Hosting
+               </h1>
+               <p class="text-xl text-gray-400">Keep your bots running 24/7 with zero downtime.</p>
+           </header>
 
 
-           <div class="max-w-6xl mx-auto">
-               <h2 class="text-3xl font-bold text-center mb-8 text-primary-blue">Optimized for Python, Node.js, and Java</h2>
-              
-               <!-- Feature Grid specific to Discord -->
-               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                   <div class="bg-card-bg p-6 rounded-xl border border-gray-700">
-                       <h3 class="text-xl font-semibold text-text-light flex items-center"><span class="mr-2 text-primary-green">✓</span> Continuous Uptime</h3>
-                       <p class="text-gray-400 mt-2">Dedicated resources ensure your bot never misses a command, day or night.</p>
-                   </div>
-                   <div class="bg-card-bg p-6 rounded-xl border border-gray-700">
-                       <h3 class="text-xl font-semibold text-text-light flex items-center"><span class="mr-2 text-primary-green">✓</span> Easy Deployment</h3>
-                       <p class="text-gray-400 mt-2">Simple SSH/FTP access for quick code updates and deployment.</p>
-                   </div>
-               </div>
+           <div class="max-w-6xl mx-auto">
+               <h2 class="text-3xl font-bold text-center mb-8 text-primary-blue">Optimized for Python, Node.js, and Java</h2>
+              
+                              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                   <div class="bg-card-bg p-6 rounded-xl border border-gray-700">
+                       <h3 class="text-xl font-semibold text-text-light flex items-center"><span class="mr-2 text-primary-green">✓</span> Continuous Uptime</h3>
+                       <p class="text-gray-400 mt-2">Dedicated resources ensure your bot never misses a command, day or night.</p>
+                   </div>
+                   <div class="bg-card-bg p-6 rounded-xl border border-gray-700">
+                       <h3 class="text-xl font-semibold text-text-light flex items-center"><span class="mr-2 text-primary-green">✓</span> Easy Deployment</h3>
+                       <p class="text-gray-400 mt-2">Simple SSH/FTP access for quick code updates and deployment.</p>
+                   </div>
+               </div>
 
 
-               <!-- Discord Plan Carousel -->
-               <!-- ADDED pt-4 (padding top) to prevent the scaled-up featured card from clipping -->
-               <div id="plan-carousel-discord" class="flex overflow-x-scroll pt-4 pb-10 hide-scroll-bar snap-x snap-mandatory space-x-6">
-                   <!-- Cards will be dynamically inserted here by JavaScript -->
-               </div>
-               <p class="text-center text-gray-500 mt-6 text-sm">Scroll horizontally to view available Discord hosting plans.</p>
-           </div>
-       </section>
+                                             <div id="plan-carousel-discord" class="flex overflow-x-scroll pt-4 pb-10 hide-scroll-bar snap-x snap-mandatory space-x-6">
+                                  </div>
+               <p class="text-center text-gray-500 mt-6 text-sm">Scroll horizontally to view available Discord hosting plans.</p>
+           </div>
+       </section>
 
 
-   </div> <!-- End App Container -->
+   </div>       <script>
+       document.addEventListener('DOMContentLoaded', () => {
+           // --- Configuration ---
+           // Define all plans (1GB to 12GB)
+           const PLANS = [];
+           for (let i = 1; i <= 12; i++) {
+               PLANS.push({
+                   ram: i,
+                   price: i,
+                   // Updated CPU description (Removed 'i5')
+                   cpu: 'Dedicated i5-6600k',
+                   storage: '100GB NVMe SSD',
+               });
+           }
 
 
-   <!-- JavaScript to manage routing and generate plans -->
-   <script>
-       document.addEventListener('DOMContentLoaded', () => {
-           // --- Configuration ---
-           // Define all plans (1GB to 12GB)
-           const PLANS = [];
-           for (let i = 1; i <= 12; i++) {
-               PLANS.push({
-                   ram: i,
-                   price: i,
-                   // Updated CPU description (Removed 'i5')
-                   cpu: 'Dedicated i5-6600k',
-                   storage: '100GB NVMe SSD',
-               });
-           }
+           // --- Routing Logic ---
+           const pages = {
+               home: document.getElementById('home-page'),
+               minecraft: document.getElementById('minecraft-page'),
+               discord: document.getElementById('discord-page'),
+           };
 
 
-           // --- Routing Logic ---
-           const pages = {
-               home: document.getElementById('home-page'),
-               minecraft: document.getElementById('minecraft-page'),
-               discord: document.getElementById('discord-page'),
-           };
+           const navLinks = document.querySelectorAll('.nav-link, .nav-link-cta');
+          
+           const renderPage = (pageName) => {
+               // Hide all pages
+               Object.values(pages).forEach(page => {
+                   page.style.display = 'none';
+               });
 
 
-           const navLinks = document.querySelectorAll('.nav-link, .nav-link-cta');
-          
-           const renderPage = (pageName) => {
-               // Hide all pages
-               Object.values(pages).forEach(page => {
-                   page.style.display = 'none';
-               });
+               // Show the requested page
+               const targetPage = pages[pageName];
+               if (targetPage) {
+                   targetPage.style.display = 'block';
+               }
 
 
-               // Show the requested page
-               const targetPage = pages[pageName];
-               if (targetPage) {
-                   targetPage.style.display = 'block';
-               }
+               // Update active navigation link styling (for the top bar)
+               document.querySelectorAll('.nav-link').forEach(link => {
+                   if (link.dataset.page === pageName) {
+                       link.classList.add('nav-active');
+                   } else {
+                       link.classList.remove('nav-active');
+                   }
+               });
+              
+               window.location.hash = pageName;
+           };
 
 
-               // Update active navigation link styling (for the top bar)
-               document.querySelectorAll('.nav-link').forEach(link => {
-                   if (link.dataset.page === pageName) {
-                       link.classList.add('nav-active');
-                   } else {
-                       link.classList.remove('nav-active');
-                   }
-               });
-              
-               window.location.hash = pageName;
-           };
+           // Initial page load based on hash or default to 'home'
+           const initialPage = window.location.hash.substring(1) || 'home';
+           renderPage(initialPage);
+          
+           // Event listener for navigation links (top bar and home page CTAs)
+           navLinks.forEach(link => {
+               link.addEventListener('click', (e) => {
+                   const pageName = e.currentTarget.dataset.page;
+                   renderPage(pageName);
+               });
+           });
 
 
-           // Initial page load based on hash or default to 'home'
-           const initialPage = window.location.hash.substring(1) || 'home';
-           renderPage(initialPage);
-          
-           // Event listener for navigation links (top bar and home page CTAs)
-           navLinks.forEach(link => {
-               link.addEventListener('click', (e) => {
-                   const pageName = e.currentTarget.dataset.page;
-                   renderPage(pageName);
-               });
-           });
+           // --- Card Generation Logic ---
 
 
-           // --- Card Generation Logic ---
+           // Helper function to generate simple inline SVG icons
+           const getIcon = (type, isFeatured) => {
+               const color = isFeatured ? 'text-dark-bg' : 'text-primary-blue';
+               const svgBase = `<svg class="w-5 h-5 flex-shrink-0 ${color}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">`;
+              
+               switch (type) {
+                   case 'cpu': return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1-1v-2.75M14.25 17L15 20l1-1v-2.75M12 9v6m-4-2h8m-8 4h8"></path></svg>`;
+                   case 'disk': return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"></path></svg>`;
+                   case 'network': return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.477 3-9s-1.343-9-3-9c1.657 0 3 4.477 3 9s-1.343 9-3 9z"></path></svg>`;
+                   case 'lock': return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6-6h12m-2-6a4 4 0 01-4 4H8a4 4 0 01-4-4V6a4 4 0 014-4h8a4 4 0 014 4v4m-2 4a2 2 0 11-4 0m4 0a2 2 0 10-4 0"></path></svg>`;
+                   default: return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+               }
+           };
+          
+           // Function to create a plan card element
+           const createPlanCard = (plan, pageType) => {
+               let isFeatured = false;
+               let titleText;
+               let descriptionText;
+               let extraFeature;
 
 
-           // Helper function to generate simple inline SVG icons
-           const getIcon = (type, isFeatured) => {
-               const color = isFeatured ? 'text-dark-bg' : 'text-primary-blue';
-               const svgBase = `<svg class="w-5 h-5 flex-shrink-0 ${color}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">`;
-              
-               switch (type) {
-                   case 'cpu': return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1-1v-2.75M14.25 17L15 20l1-1v-2.75M12 9v6m-4-2h8m-8 4h8"></path></svg>`;
-                   case 'disk': return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"></path></svg>`;
-                   case 'network': return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.477 3-9s-1.343-9-3-9c1.657 0 3 4.477 3 9s-1.343 9-3 9z"></path></svg>`;
-                   case 'lock': return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6-6h12m-2-6a4 4 0 01-4 4H8a4 4 0 01-4-4V6a4 4 0 014-4h8a4 4 0 014 4v4m-2 4a2 2 0 11-4 0m4 0a2 2 0 10-4 0"></path></svg>`;
-                   default: return `${svgBase}<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
-               }
-           };
-          
-           // Function to create a plan card element
-           const createPlanCard = (plan, pageType) => {
-               let isFeatured = false;
-               let titleText;
-               let descriptionText;
-               let extraFeature;
+               // Determine featured status and unique text based on pageType
+               if (pageType === 'minecraft') {
+                   isFeatured = plan.ram === 8; // Minecraft recommended: 8GB
+                   titleText = 'Minecraft Server';
+                   descriptionText = plan.ram <= 2 ? 'Small family server' : plan.ram <= 6 ? 'Standard community server' : 'Large network/Modpack server';
+                   // Updated extra feature to explicitly list server software
+                   extraFeature = 'Full Server Software Support (Paper, Spigot, Fabric, etc.)';
+               } else if (pageType === 'discord') {
+                   isFeatured = plan.ram === 2; // Discord recommended: 2GB
+                   titleText = 'Discord Bot Instance';
+                   descriptionText = plan.ram <= 2 ? 'Basic command bot' : 'High-volume integrated bot';
+                   extraFeature = 'Websocket Auto-Restart';
+               } else { // Fallback, though this path shouldn't be hit now
+                   isFeatured = plan.ram >= 4 && plan.ram <= 8;
+                   titleText = 'Cloud VM';
+                   descriptionText = 'web app or database';
+                   extraFeature = 'Dedicated IPv4 Address';
+               }
 
 
-               // Determine featured status and unique text based on pageType
-               if (pageType === 'minecraft') {
-                   isFeatured = plan.ram === 8; // Minecraft recommended: 8GB
-                   titleText = 'Minecraft Server';
-                   descriptionText = plan.ram <= 2 ? 'Small family server' : plan.ram <= 6 ? 'Standard community server' : 'Large network/Modpack server';
-                   // Updated extra feature to explicitly list server software
-                   extraFeature = 'Full Server Software Support (Paper, Spigot, Fabric, etc.)';
-               } else if (pageType === 'discord') {
-                   isFeatured = plan.ram === 2; // Discord recommended: 2GB
-                   titleText = 'Discord Bot Instance';
-                   descriptionText = plan.ram <= 2 ? 'Basic command bot' : 'High-volume integrated bot';
-                   extraFeature = 'Websocket Auto-Restart';
-               } else { // Fallback, though this path shouldn't be hit now
-                   isFeatured = plan.ram >= 4 && plan.ram <= 8;
-                   titleText = 'Cloud VM';
-                   descriptionText = 'web app or database';
-                   extraFeature = 'Dedicated IPv4 Address';
-               }
+               const card = document.createElement('div');
 
 
-               const card = document.createElement('div');
+               // Tailwind classes for the card structure and responsiveness
+               card.className = `
+                   flex-none w-full sm:w-80 md:w-96 lg:w-96
+                   p-6 rounded-2xl shadow-2xl transition duration-500 transform
+                   ${isFeatured
+                       // UPDATED: Using the new, darker blue gradient defined in the tailwind.config
+                       ? 'bg-gradient-to-br from-featured-dark-blue to-featured-dark-blue-light border-4 border-primary-green scale-105 hover:scale-100'
+                       : 'bg-card-bg border border-gray-700 hover:border-primary-blue'
+                   }
+                   snap-center
+               `;
+              
+               // Card Content
+               card.innerHTML = `
+                   <p class="text-sm font-medium uppercase text-gray-300">${isFeatured ? '🔥 Recommended' : titleText}</p>
+                   <h3 class="text-4xl font-extrabold mt-1 mb-2">
+                       ${plan.ram}GB RAM
+                   </h3>
+                  
+                   <div class="flex items-baseline my-4">
+                       <span class="text-5xl font-extrabold">${'$' + plan.price}</span>
+                       <span class="text-xl font-medium text-gray-400">/mo</span>
+                   </div>
 
 
-               // Tailwind classes for the card structure and responsiveness
-               card.className = `
-                   flex-none w-full sm:w-80 md:w-96 lg:w-96
-                   p-6 rounded-2xl shadow-2xl transition duration-500 transform
-                   ${isFeatured
-                       // UPDATED: Using the new, darker blue gradient defined in the tailwind.config
-                       ? 'bg-gradient-to-br from-featured-dark-blue to-featured-dark-blue-light border-4 border-primary-green scale-105 hover:scale-100'
-                       : 'bg-card-bg border border-gray-700 hover:border-primary-blue'
-                   }
-                   snap-center
-               `;
-              
-               // Card Content
-               card.innerHTML = `
-                   <p class="text-sm font-medium uppercase text-gray-300">${isFeatured ? '🔥 Recommended' : titleText}</p>
-                   <h3 class="text-4xl font-extrabold mt-1 mb-2">
-                       ${plan.ram}GB RAM
-                   </h3>
-                  
-                   <div class="flex items-baseline my-4">
-                       <span class="text-5xl font-extrabold">${'$' + plan.price}</span>
-                       <span class="text-xl font-medium text-gray-400">/mo</span>
-                   </div>
+                   <p class="text-sm text-gray-400 mb-6">Perfect for ${descriptionText}.</p>
 
 
-                   <p class="text-sm text-gray-400 mb-6">Perfect for ${descriptionText}.</p>
+                   <div class="space-y-3">
+                                              <div class="flex items-center text-text-light">
+                           ${getIcon('cpu', isFeatured)}
+                           <span class="ml-3 font-semibold">${plan.cpu}</span>
+                       </div>
+                                              <div class="flex items-center text-text-light">
+                           ${getIcon('disk', isFeatured)}
+                           <span class="ml-3">${plan.storage}</span>
+                       </div>
+                                              <div class="flex items-center text-text-light">
+                           ${getIcon('network', isFeatured)}
+                           <span class="ml-3">${extraFeature}</span>
+                       </div>
+                                              <div class="flex items-center text-text-light">
+                           ${getIcon('lock', isFeatured)}
+                           <span class="ml-3">DDoS Protection</span>
+                       </div>
+                   </div>
 
 
-                   <div class="space-y-3">
-                       <!-- CPU Feature (uses updated CPU text from PLANS) -->
-                       <div class="flex items-center text-text-light">
-                           ${getIcon('cpu', isFeatured)}
-                           <span class="ml-3 font-semibold">${plan.cpu}</span>
-                       </div>
-                       <!-- Storage Feature -->
-                       <div class="flex items-center text-text-light">
-                           ${getIcon('disk', isFeatured)}
-                           <span class="ml-3">${plan.storage}</span>
-                       </div>
-                       <!-- Extra Feature (Updated for Minecraft) -->
-                       <div class="flex items-center text-text-light">
-                           ${getIcon('network', isFeatured)}
-                           <span class="ml-3">${extraFeature}</span>
-                       </div>
-                       <!-- Security Feature -->
-                       <div class="flex items-center text-text-light">
-                           ${getIcon('lock', isFeatured)}
-                           <span class="ml-3">DDoS Protection</span>
-                       </div>
-                   </div>
+                   <button class="w-full mt-8 py-3 rounded-lg text-lg font-bold transition duration-300
+                       ${isFeatured
+                           ? 'bg-primary-green text-dark-bg hover:bg-green-600'
+                           : 'bg-primary-blue text-white hover:bg-blue-600'
+                       }
+                   ">
+                       Get Started
+                   </button>
+               `;
 
 
-                   <button class="w-full mt-8 py-3 rounded-lg text-lg font-bold transition duration-300
-                       ${isFeatured
-                           ? 'bg-primary-green text-dark-bg hover:bg-green-600'
-                           : 'bg-primary-blue text-white hover:bg-blue-600'
-                       }
-                   ">
-                       Get Started
-                   </button>
-               `;
+               return card;
+           };
 
 
-               return card;
-           };
+           // --- Populate Carousels ---
+           const carouselMinecraft = document.getElementById('plan-carousel-minecraft');
+           const carouselDiscord = document.getElementById('plan-carousel-discord');
 
 
-           // --- Populate Carousels ---
-           const carouselMinecraft = document.getElementById('plan-carousel-minecraft');
-           const carouselDiscord = document.getElementById('plan-carousel-discord');
-
-
-           PLANS.forEach(plan => {
-               // Minecraft Plans (All 1GB-12GB available, 8GB featured)
-               carouselMinecraft.appendChild(createPlanCard(plan, 'minecraft'));
-              
-               // Discord Bot Plans (Only 1GB, 2GB, 3GB, 4GB available, 2GB featured)
-               if (plan.ram <= 4) {
-                   carouselDiscord.appendChild(createPlanCard(plan, 'discord'));
-               }
-           });
-       });
-   </script>
+           PLANS.forEach(plan => {
+               // Minecraft Plans (All 1GB-12GB available, 8GB featured)
+               carouselMinecraft.appendChild(createPlanCard(plan, 'minecraft'));
+              
+               // Discord Bot Plans (Only 1GB, 2GB, 3GB, 4GB available, 2GB featured)
+               if (plan.ram <= 4) {
+                   carouselDiscord.appendChild(createPlanCard(plan, 'discord'));
+               }
+           });
+       });
+   </script>
 
 
 </body>
