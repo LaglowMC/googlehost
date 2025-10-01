@@ -430,41 +430,37 @@
                    carouselDiscord.appendChild(createPlanCard(plan, 'discord'));
                }
            });
-       // --- Popup Logic ---
-function openPopup() {
-  document.getElementById("discordPopup").classList.remove("hidden");
-}
-function closePopup() {
-  document.getElementById("discordPopup").classList.add("hidden");
-}
           
-// Attach popup to all Get Started buttons
-setTimeout(() => {
-  document.querySelectorAll("button").forEach(btn => {
-    if (btn.textContent.trim() === "Get Started") {
-      btn.addEventListener("click", e => {
-        e.preventDefault();
-        openPopup();
-      });
-    }
-  });
-}, 500);
-
+           // Modal logic
+           const modal = document.getElementById('order-modal');
+           const closeBtn = document.getElementById('close-modal');
+           document.body.addEventListener('click', (e) => {
+               if (e.target && e.target.tagName === 'BUTTON' && e.target.textContent.includes("Get Started")) {
+                   e.preventDefault();
+                   modal.classList.remove('hidden');
+               }
+           });
+           closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+           modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.add('hidden'); });
        });
    </script>
 
    <!-- Discord Join Popup -->
-<div id="discordPopup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-2xl shadow-lg p-6 max-w-sm text-center">
-    <h2 class="text-xl font-bold mb-4">Join Our Discord</h2>
-    <p class="mb-4">You need to join our Discord before purchasing a plan.</p>
-    <a href="YOUR_DISCORD_INVITE_LINK" target="_blank"
-       class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
-      Join Discord
-    </a>
-    <button onclick="closePopup()" class="mt-4 block w-full text-gray-600 hover:text-black">Close</button>
-  </div>
-</div>
+   <!-- Order Modal -->
+   <div id="order-modal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center z-50">
+       <div class="bg-card-bg rounded-2xl p-8 max-w-md w-full text-center shadow-2xl border border-primary-green">
+           <h2 class="text-2xl font-bold text-primary-green mb-4">Place Your Order</h2>
+           <p class="text-gray-300 mb-6">
+               To purchase this hosting plan, please join our Discord server and open an order ticket.
+           </p>
+           <a href="https://discord.gg/T72wnB3wSn" target="_blank"
+              class="inline-block bg-primary-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg mb-4">
+               Join Discord
+           </a>
+           <br>
+           <button id="close-modal" class="text-sm text-gray-400 hover:text-white mt-2">Close</button>
+       </div>
+   </div>
 
 </body>
 </html>
