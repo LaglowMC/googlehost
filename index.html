@@ -430,9 +430,42 @@
                    carouselDiscord.appendChild(createPlanCard(plan, 'discord'));
                }
            });
+       // --- Popup Logic ---
+function openPopup() {
+  document.getElementById("discordPopup").classList.remove("hidden");
+}
+function closePopup() {
+  document.getElementById("discordPopup").classList.add("hidden");
+}
+          
+// Attach popup to all Get Started buttons
+setTimeout(() => {
+  document.querySelectorAll("button").forEach(btn => {
+    if (btn.textContent.trim() === "Get Started") {
+      btn.addEventListener("click", e => {
+        e.preventDefault();
+        openPopup();
+      });
+    }
+  });
+}, 500);
+
        });
    </script>
 
+   <!-- Discord Join Popup -->
+<div id="discordPopup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-lg p-6 max-w-sm text-center">
+    <h2 class="text-xl font-bold mb-4">Join Our Discord</h2>
+    <p class="mb-4">You need to join our Discord before purchasing a plan.</p>
+    <a href="YOUR_DISCORD_INVITE_LINK" target="_blank"
+       class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+      Join Discord
+    </a>
+    <button onclick="closePopup()" class="mt-4 block w-full text-gray-600 hover:text-black">Close</button>
+  </div>
+</div>
 
 </body>
 </html>
+
