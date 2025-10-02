@@ -141,15 +141,61 @@
                    </button>
                    <!-- Support/Contact -->
                    <div class="p-6 rounded-xl bg-card-bg border border-gray-700 text-left">
-                       <h3 class="text-xl font-semibold text-primary-blue">Support & Community</h3>
-                       <p class="text-gray-400 mt-2 mb-4">Connect with our team and community for quick help and advice.</p>
-                       
-                       <div class="flex flex-col space-y-2">
-                           <button class="text-sm font-semibold text-dark-bg bg-primary-blue py-2 px-4 rounded-lg hover:bg-blue-600 transition w-full">Contact Support</button>
-                           <a href="https://discord.gg/T72wnB3wSn" target="_blank" class="text-sm font-semibold text-dark-bg bg-gray-500 py-2 px-4 rounded-lg hover:bg-gray-600 transition w-full text-center">Discord Server</a>
-                       </div>
-                       
-                   </div>
+    <h3 class="text-xl font-semibold text-primary-blue">Support & Community</h3>
+    <p class="text-gray-400 mt-2 mb-4">Connect with our team and community for quick help and advice.</p>
+
+    <div class="flex flex-col space-y-2">
+        <button id="open-support-modal" type="button" class="text-sm font-semibold text-dark-bg bg-primary-blue py-2 px-4 rounded-lg hover:bg-blue-600 transition w-full">Contact Support</button>
+        <a href="https://discord.gg/T72wnB3wSn" target="_blank" class="text-sm font-semibold text-dark-bg bg-gray-500 py-2 px-4 rounded-lg hover:bg-gray-600 transition w-full text-center">Discord Server</a>
+    </div>
+
+    <div id="support-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        
+        <div class="bg-card-bg p-8 rounded-xl shadow-2xl w-full max-w-md mx-4 border border-gray-700">
+            <div class="flex justify-between items-center mb-6">
+                <h4 class="text-2xl font-bold text-primary-blue">Contact Support</h4>
+                <button id="close-support-modal" type="button" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+
+            <div class="space-y-4">
+                
+                <div>
+                    <label for="form-name" class="block text-sm font-medium text-gray-300">Your Name</label>
+                    <input type="text" id="form-name" name="Name" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
+                </div>
+
+                <div>
+                    <label for="form-discord-id" class="block text-sm font-medium text-gray-300">Discord User ID (Optional)</label>
+                    <input type="text" id="form-discord-id" name="Discord User ID" placeholder="e.g., username#1234 or a numeric ID" class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
+                </div>
+
+                <div>
+                    <label for="form-email" class="block text-sm font-medium text-gray-300">Email Address</label>
+                    <input type="email" id="form-email" name="Email" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
+                </div>
+
+                <div>
+                    <label for="form-reason" class="block text-sm font-medium text-gray-300">Reason for Support</label>
+                    <select id="form-reason" name="Support Reason" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
+                        <option value="" disabled selected>Select a reason...</option>
+                        <option value="Billing/Payment Issue">Billing/Payment Issue</option>
+                        <option value="Technical Bug/Glitch">Technical Bug/Glitch</option>
+                        <option value="Feature Request/Suggestion">Feature Request/Suggestion</option>
+                        <option value="Other Inquiry">Other Inquiry</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="form-explanation" class="block text-sm font-medium text-gray-300">Detailed Explanation</label>
+                    <textarea id="form-explanation" name="Detailed Explanation" rows="4" required placeholder="Please describe your issue or question in detail." class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue"></textarea>
+                </div>
+
+                <button type="button" id="submit-mailto" class="w-full text-sm font-semibold text-dark-bg bg-primary-blue py-3 px-4 rounded-lg hover:bg-blue-600 transition mt-6">Send Support Request</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
               
                <!-- CTA to General Plans removed as requested -->
@@ -466,6 +512,81 @@
        </div>
    </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Modal Element Selectors
+    const openBtn = document.getElementById('open-support-modal');
+    const closeBtn = document.getElementById('close-support-modal');
+    const modal = document.getElementById('support-modal');
+    const submitMailtoBtn = document.getElementById('submit-mailto');
+
+    // Input Field Selectors
+    const nameInput = document.getElementById('form-name');
+    const discordIdInput = document.getElementById('form-discord-id');
+    const emailInput = document.getElementById('form-email');
+    const reasonInput = document.getElementById('form-reason');
+    const explanationInput = document.getElementById('form-explanation');
+
+    // --- Modal Control Logic ---
+    if (openBtn) {
+        openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+    }
+    if (modal) {
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.add('hidden');
+        });
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) modal.classList.add('hidden');
+        });
+    }
+
+    // --- Mailto Submission Logic ---
+    if (submitMailtoBtn) {
+        submitMailtoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // ⚠️ DEFINE YOUR TARGET EMAIL HERE ⚠️
+            const targetEmail = 'YOUR_SUPPORT_EMAIL@example.com'; 
+
+            // Basic Validation Check (Required fields must not be empty)
+            if (!nameInput.value || !emailInput.value || !reasonInput.value || !explanationInput.value) {
+                alert('Please fill out all required fields (Name, Email, Reason, and Detailed Explanation).');
+                return; 
+            }
+
+            // Construct the Email Body Text
+            // Use '\n' for new lines in the email body
+            const bodyContent = `
+Name: ${nameInput.value}
+Email: ${emailInput.value}
+Discord ID: ${discordIdInput.value || 'N/A (Optional field left empty)'}
+--------------------------------
+Support Reason: ${reasonInput.value}
+--------------------------------
+Detailed Explanation:
+${explanationInput.value}
+`;
+            
+            // URL-encode the subject and body
+            const subject = encodeURIComponent(`New Support Request: ${reasonInput.value}`);
+            const body = encodeURIComponent(bodyContent);
+
+            // Assemble and open the mailto link
+            const mailtoLink = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+            window.location.href = mailtoLink;
+
+            // Close the modal after submission attempt
+            modal.classList.add('hidden');
+        });
+    }
+});
+</script>
+   
 </body>
 </html>
 
