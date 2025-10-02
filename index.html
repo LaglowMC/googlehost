@@ -140,43 +140,52 @@
                        <p class="text-gray-400 mt-2">24/7 reliability for your custom utility, music, or integrated bots.</p>
                    </button>
                    <!-- Support/Contact -->
-                   <div class="p-6 rounded-xl bg-card-bg border border-gray-700 text-left">
+                   <!-- Support/Contact Section -->
+<div class="p-6 rounded-xl bg-card-bg border border-gray-700 text-left">
     <h3 class="text-xl font-semibold text-primary-blue">Support & Community</h3>
     <p class="text-gray-400 mt-2 mb-4">Connect with our team and community for quick help and advice.</p>
 
+    <!-- Support/Community Buttons (Discord link preserved) -->
     <div class="flex flex-col space-y-2">
         <button id="open-support-modal" type="button" class="text-sm font-semibold text-dark-bg bg-primary-blue py-2 px-4 rounded-lg hover:bg-blue-600 transition w-full">Contact Support</button>
         <a href="https://discord.gg/T72wnB3wSn" target="_blank" class="text-sm font-semibold text-dark-bg bg-gray-500 py-2 px-4 rounded-lg hover:bg-gray-600 transition w-full text-center">Discord Server</a>
     </div>
 
+    <!-- MODAL Structure (Hidden by default) -->
     <div id="support-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         
+        <!-- Modal Content Container -->
         <div class="bg-card-bg p-8 rounded-xl shadow-2xl w-full max-w-md mx-4 border border-gray-700">
             <div class="flex justify-between items-center mb-6">
                 <h4 class="text-2xl font-bold text-primary-blue">Contact Support</h4>
                 <button id="close-support-modal" type="button" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
             </div>
 
-            <div class="space-y-4">
+            <!-- The Support Form (Uses onsubmit to trigger the webhook) -->
+            <form id="support-form" class="space-y-4">
                 
+                <!-- Name Field -->
                 <div>
                     <label for="form-name" class="block text-sm font-medium text-gray-300">Your Name</label>
-                    <input type="text" id="form-name" name="Name" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
+                    <input type="text" id="form-name" name="name" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
                 </div>
 
+                <!-- (Optional) Discord User ID Field -->
                 <div>
                     <label for="form-discord-id" class="block text-sm font-medium text-gray-300">Discord User ID (Optional)</label>
-                    <input type="text" id="form-discord-id" name="Discord User ID" placeholder="e.g., username#1234 or a numeric ID" class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
+                    <input type="text" id="form-discord-id" name="discord-id" placeholder="e.g., username#1234 or a numeric ID" class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
                 </div>
 
+                <!-- Email Field -->
                 <div>
                     <label for="form-email" class="block text-sm font-medium text-gray-300">Email Address</label>
-                    <input type="email" id="form-email" name="Email" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
+                    <input type="email" id="form-email" name="email" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
                 </div>
 
+                <!-- Reason for Support (Dropdown) -->
                 <div>
                     <label for="form-reason" class="block text-sm font-medium text-gray-300">Reason for Support</label>
-                    <select id="form-reason" name="Support Reason" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
+                    <select id="form-reason" name="reason" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
                         <option value="" disabled selected>Select a reason...</option>
                         <option value="Billing/Payment Issue">Billing/Payment Issue</option>
                         <option value="Technical Bug/Glitch">Technical Bug/Glitch</option>
@@ -185,13 +194,15 @@
                     </select>
                 </div>
 
+                <!-- Explanation of Support Needs (Textarea) -->
                 <div>
                     <label for="form-explanation" class="block text-sm font-medium text-gray-300">Detailed Explanation</label>
-                    <textarea id="form-explanation" name="Detailed Explanation" rows="4" required placeholder="Please describe your issue or question in detail." class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue"></textarea>
+                    <textarea id="form-explanation" name="explanation" rows="4" required placeholder="Please describe your issue or question in detail." class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue"></textarea>
                 </div>
 
-                <button type="button" id="submit-mailto" class="w-full text-sm font-semibold text-dark-bg bg-primary-blue py-3 px-4 rounded-lg hover:bg-blue-600 transition mt-6">Send Support Request</button>
-            </div>
+                <!-- Submit Button -->
+                <button type="submit" id="submit-webhook" class="w-full text-sm font-semibold text-dark-bg bg-primary-blue py-3 px-4 rounded-lg hover:bg-blue-600 transition mt-6">Send Support Request</button>
+            </form>
 
         </div>
     </div>
@@ -514,11 +525,16 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Configuration ---
+    // ⚠️ REPLACE THIS WITH YOUR ACTUAL DISCORD WEBHOOK URL ⚠️
+    const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1423395942656245852/X1D0nlvP_vMmrfC8tUJRzls2Y-s3QN9UQ_jKiqFpGF8wC5hfgevhutX5ROsL70dJ51k4';
+    // ---------------------
+
     // Modal Element Selectors
     const openBtn = document.getElementById('open-support-modal');
     const closeBtn = document.getElementById('close-support-modal');
     const modal = document.getElementById('support-modal');
-    const submitMailtoBtn = document.getElementById('submit-mailto');
+    const form = document.getElementById('support-form');
 
     // Input Field Selectors
     const nameInput = document.getElementById('form-name');
@@ -526,6 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.getElementById('form-email');
     const reasonInput = document.getElementById('form-reason');
     const explanationInput = document.getElementById('form-explanation');
+    const submitButton = document.getElementById('submit-webhook');
 
     // --- Modal Control Logic ---
     if (openBtn) {
@@ -535,53 +552,81 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
     }
     if (modal) {
-        // Close on outside click
+        // Close on outside click or Escape key
         modal.addEventListener('click', (e) => {
             if (e.target === modal) modal.classList.add('hidden');
         });
-        // Close on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !modal.classList.contains('hidden')) modal.classList.add('hidden');
         });
     }
 
-    // --- Mailto Submission Logic ---
-    if (submitMailtoBtn) {
-        submitMailtoBtn.addEventListener('click', (e) => {
+    // --- Discord Webhook Submission Logic ---
+    if (form && DISCORD_WEBHOOK_URL && submitButton) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // ⚠️ DEFINE YOUR TARGET EMAIL HERE ⚠️
-            const targetEmail = 'YOUR_SUPPORT_EMAIL@example.com'; 
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            submitButton.classList.add('opacity-70');
 
-            // Basic Validation Check (Required fields must not be empty)
-            if (!nameInput.value || !emailInput.value || !reasonInput.value || !explanationInput.value) {
-                alert('Please fill out all required fields (Name, Email, Reason, and Detailed Explanation).');
-                return; 
-            }
+            // --- 1. Format the data for Discord (using Embeds for better visibility) ---
 
-            // Construct the Email Body Text
-            // Use '\n' for new lines in the email body
-            const bodyContent = `
-Name: ${nameInput.value}
-Email: ${emailInput.value}
-Discord ID: ${discordIdInput.value || 'N/A (Optional field left empty)'}
---------------------------------
-Support Reason: ${reasonInput.value}
---------------------------------
-Detailed Explanation:
-${explanationInput.value}
-`;
+            const discordId = discordIdInput.value || 'N/A';
             
-            // URL-encode the subject and body
-            const subject = encodeURIComponent(`New Support Request: ${reasonInput.value}`);
-            const body = encodeURIComponent(bodyContent);
+            const payload = {
+                // Discord webhook properties
+                username: "Support Bot",
+                avatar_url: "https://placehold.co/60x60/805ad5/ffffff?text=S", // Placeholder icon
 
-            // Assemble and open the mailto link
-            const mailtoLink = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
-            window.location.href = mailtoLink;
+                // Embed for structured data
+                embeds: [{
+                    title: `🆘 New Support Request: ${reasonInput.value}`,
+                    color: 3447003, // A nice blue color
+                    description: `**Submitted By:** ${nameInput.value}\n**Contact Email:** \`${emailInput.value}\`\n**Discord ID:** \`${discordId}\`\n\n**Issue Description:**`,
+                    fields: [
+                        {
+                            name: "Details",
+                            value: explanationInput.value.substring(0, 1024), // Discord field limit
+                            inline: false
+                        }
+                    ],
+                    timestamp: new Date().toISOString(),
+                    footer: {
+                        text: "Form submitted via website"
+                    }
+                }]
+            };
 
-            // Close the modal after submission attempt
-            modal.classList.add('hidden');
+            // --- 2. Send the data to the Discord Webhook ---
+            try {
+                const response = await fetch(DISCORD_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                if (response.ok) {
+                    // Success feedback
+                    alert('Support request successfully sent to Discord! We will be in touch via email.');
+                    form.reset(); // Clear the form
+                    modal.classList.add('hidden');
+                } else {
+                    // Failure feedback
+                    alert(`Failed to send request. Discord returned status: ${response.status}. Check your webhook URL.`);
+                }
+            } catch (error) {
+                console.error('Network error while sending webhook:', error);
+                alert('A network error occurred. Please check your connection or try again later.');
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Support Request';
+                submitButton.classList.remove('opacity-70');
+            }
         });
     }
 });
