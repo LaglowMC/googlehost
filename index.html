@@ -341,7 +341,7 @@
                    isFeatured = plan.ram === 2; // Discord recommended: 2GB
                    titleText = 'Discord Bot Instance';
                    descriptionText = plan.ram <= 2 ? 'Basic command bot' : 'High-volume integrated bot';
-                   extraFeature = 'Websocket Auto-Restart';
+                   extraFeature = '99.9% Uptime';
                } else { // Fallback, though this path shouldn't be hit now
                    isFeatured = plan.ram >= 4 && plan.ram <= 8;
                    titleText = 'Cloud VM';
@@ -400,7 +400,7 @@
                        <!-- Security Feature -->
                        <div class="flex items-center text-text-light">
                            ${getIcon('lock', isFeatured)}
-                           <span class="ml-3">DDoS Protection</span>
+                           <span class="ml-3">Advanced DDoS Protection</span>
                        </div>
                    </div>
 
