@@ -139,12 +139,6 @@
                        <h3 class="text-xl font-semibold text-primary-green">Discord Bot Hosting <span class="float-right text-gray-500">→</span></h3>
                        <p class="text-gray-400 mt-2">24/7 reliability for your custom utility, music, or integrated bots.</p>
                    </button>
-                   <!-- Support/Contact -->
-                   <!-- Support/Contact Section -->
-<div class="p-6 rounded-xl bg-card-bg border border-gray-700 text-left">
-    <h3 class="text-xl font-semibold text-primary-blue">Support & Community</h3>
-    <p class="text-gray-400 mt-2 mb-4">Connect with our team and community for quick help and advice.</p>
-
     <!-- Support/Community Buttons (Discord link preserved) -->
     <div class="flex flex-col space-y-2">
         <button id="open-support-modal" type="button" class="text-sm font-semibold text-dark-bg bg-primary-blue py-2 px-4 rounded-lg hover:bg-blue-600 transition w-full">Contact Support</button>
@@ -160,55 +154,7 @@
                 <h4 class="text-2xl font-bold text-primary-blue">Contact Support</h4>
                 <button id="close-support-modal" type="button" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
             </div>
-
-            <!-- The Support Form (Uses onsubmit to trigger the webhook) -->
-            <form id="support-form" class="space-y-4">
-                
-                <!-- Name Field -->
-                <div>
-                    <label for="form-name" class="block text-sm font-medium text-gray-300">Your Name</label>
-                    <input type="text" id="form-name" name="name" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
-                </div>
-
-                <!-- (Optional) Discord User ID Field -->
-                <div>
-                    <label for="form-discord-id" class="block text-sm font-medium text-gray-300">Discord User ID (Optional)</label>
-                    <input type="text" id="form-discord-id" name="discord-id" placeholder="e.g., username#1234 or a numeric ID" class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
-                </div>
-
-                <!-- Email Field -->
-                <div>
-                    <label for="form-email" class="block text-sm font-medium text-gray-300">Email Address</label>
-                    <input type="email" id="form-email" name="email" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
-                </div>
-
-                <!-- Reason for Support (Dropdown) -->
-                <div>
-                    <label for="form-reason" class="block text-sm font-medium text-gray-300">Reason for Support</label>
-                    <select id="form-reason" name="reason" required class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue">
-                        <option value="" disabled selected>Select a reason...</option>
-                        <option value="Billing/Payment Issue">Billing/Payment Issue</option>
-                        <option value="Technical Bug/Glitch">Technical Bug/Glitch</option>
-                        <option value="Feature Request/Suggestion">Feature Request/Suggestion</option>
-                        <option value="Other Inquiry">Other Inquiry</option>
-                    </select>
-                </div>
-
-                <!-- Explanation of Support Needs (Textarea) -->
-                <div>
-                    <label for="form-explanation" class="block text-sm font-medium text-gray-300">Detailed Explanation</label>
-                    <textarea id="form-explanation" name="explanation" rows="4" required placeholder="Please describe your issue or question in detail." class="mt-1 block w-full bg-dark-bg border border-gray-600 rounded-md shadow-sm p-2.5 text-white focus:ring-primary-blue focus:border-primary-blue"></textarea>
-                </div>
-
-                <!-- Submit Button -->
-                <button type="submit" id="submit-webhook" class="w-full text-sm font-semibold text-dark-bg bg-primary-blue py-3 px-4 rounded-lg hover:bg-blue-600 transition mt-6">Send Support Request</button>
-            </form>
-
-        </div>
-    </div>
-</div>
-
-              
+           
                <!-- CTA to General Plans removed as requested -->
            </div>
 
