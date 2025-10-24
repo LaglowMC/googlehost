@@ -139,22 +139,14 @@
                        <h3 class="text-xl font-semibold text-primary-green">Discord Bot Hosting <span class="float-right text-gray-500">→</span></h3>
                        <p class="text-gray-400 mt-2">24/7 reliability for your custom utility, music, or integrated bots.</p>
                    </button>
-    <!-- Support/Community Buttons (Discord link preserved) -->
-    <div class="flex flex-col space-y-2">
-        <button id="open-support-modal" type="button" class="text-sm font-semibold text-dark-bg bg-primary-blue py-2 px-4 rounded-lg hover:bg-blue-600 transition w-full">Contact Support</button>
-        <a href="https://discord.gg/6DmeVUGaM8" target="_blank" class="text-sm font-semibold text-dark-bg bg-gray-500 py-2 px-4 rounded-lg hover:bg-gray-600 transition w-full text-center">Discord Server</a>
-    </div>
+                   <!-- Support/Contact -->
+<div class="p-6 rounded-xl bg-card-bg border border-gray-700 text-left">
+    <h3 class="text-xl font-semibold text-primary-blue">Support & Community</h3>
+    <p class="text-gray-400 mt-2 mb-4">Connect with our team and community for quick help and advice.</p>
 
-    <!-- MODAL Structure (Hidden by default) -->
-    <div id="support-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-        
-        <!-- Modal Content Container -->
-        <div class="bg-card-bg p-8 rounded-xl shadow-2xl w-full max-w-md mx-4 border border-gray-700">
-            <div class="flex justify-between items-center mb-6">
-                <h4 class="text-2xl font-bold text-primary-blue">Contact Support</h4>
-                <button id="close-support-modal" type="button" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
-            </div>
-           
+    <a href="https://discord.gg/6DmeVUGaM8" target="_blank" class="text-sm font-semibold text-dark-bg bg-primary-blue py-2 px-4 rounded-lg hover:bg-blue-600 transition w-full text-center">Join Discord Server</a>
+    </div>
+              
                <!-- CTA to General Plans removed as requested -->
            </div>
 
@@ -469,115 +461,5 @@
        </div>
    </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Configuration ---
-    // ⚠️ REPLACE THIS WITH YOUR ACTUAL DISCORD WEBHOOK URL ⚠️
-    const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1423395942656245852/X1D0nlvP_vMmrfC8tUJRzls2Y-s3QN9UQ_jKiqFpGF8wC5hfgevhutX5ROsL70dJ51k4';
-    // ---------------------
-
-    // Modal Element Selectors
-    const openBtn = document.getElementById('open-support-modal');
-    const closeBtn = document.getElementById('close-support-modal');
-    const modal = document.getElementById('support-modal');
-    const form = document.getElementById('support-form');
-
-    // Input Field Selectors
-    const nameInput = document.getElementById('form-name');
-    const discordIdInput = document.getElementById('form-discord-id');
-    const emailInput = document.getElementById('form-email');
-    const reasonInput = document.getElementById('form-reason');
-    const explanationInput = document.getElementById('form-explanation');
-    const submitButton = document.getElementById('submit-webhook');
-
-    // --- Modal Control Logic ---
-    if (openBtn) {
-        openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
-    }
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
-    }
-    if (modal) {
-        // Close on outside click or Escape key
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.classList.add('hidden');
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) modal.classList.add('hidden');
-        });
-    }
-
-    // --- Discord Webhook Submission Logic ---
-    if (form && DISCORD_WEBHOOK_URL && submitButton) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            // Disable button and show loading state
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-            submitButton.classList.add('opacity-70');
-
-            // --- 1. Format the data for Discord (using Embeds for better visibility) ---
-
-            const discordId = discordIdInput.value || 'N/A';
-            
-            const payload = {
-                // Discord webhook properties
-                username: "Support Bot",
-                avatar_url: "https://placehold.co/60x60/805ad5/ffffff?text=S", // Placeholder icon
-
-                // Embed for structured data
-                embeds: [{
-                    title: `📨 New Support Request: ${reasonInput.value}`,
-                    color: 3447003, // A nice blue color
-                    description: `**Name:** ${nameInput.value}\n**Contact Email:** \`${emailInput.value}\`\n**Discord ID:** \`${discordId}\``,
-                    fields: [
-                        {
-                            name: "Details",
-                            value: explanationInput.value.substring(0, 1024), // Discord field limit
-                            inline: false
-                        }
-                    ],
-                    timestamp: new Date().toISOString(),
-                    footer: {
-                        text: "Form submitted via website"
-                    }
-                }]
-            };
-
-            // --- 2. Send the data to the Discord Webhook ---
-            try {
-                const response = await fetch(DISCORD_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload),
-                });
-
-                if (response.ok) {
-                    // Success feedback
-                    alert('Support request successfully sent to Discord! We will be in touch via email.');
-                    form.reset(); // Clear the form
-                    modal.classList.add('hidden');
-                } else {
-                    // Failure feedback
-                    alert(`Failed to send request. Discord returned status: ${response.status}. Check your webhook URL.`);
-                }
-            } catch (error) {
-                console.error('Network error while sending webhook:', error);
-                alert('A network error occurred. Please check your connection or try again later.');
-            } finally {
-                // Re-enable button
-                submitButton.disabled = false;
-                submitButton.textContent = 'Send Support Request';
-                submitButton.classList.remove('opacity-70');
-            }
-        });
-    }
-});
-</script>
-   
 </body>
 </html>
-
